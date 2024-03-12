@@ -1,16 +1,16 @@
 <script setup lang="ts">
-
-const toggleDarkMode = () => {
-  document.body.classList.toggle("dark");
-}
+import SideBar from '@/components/SideBar.vue';
+import TaskCard from '@/components/TaskCard.vue';
 
 </script>
 
 <template>
-  <div class="bg-background text-text-primary">Hello
-    <button @click="toggleDarkMode" class=" mt-8 p-8">Dark mode</button>
+  <div class="">
+    <SideBar />
+    <div class=" ml-96">
+      <TaskCard />
+    </div>
   </div>
-
 </template>
 
 <style scoped></style>
