@@ -10,15 +10,8 @@ const config: Config = {
         card: "138px",
         addons: "450px",
       },
-      width: {
-        addons: "450px",
-        container: "90%"
-      },
-      height: {
-        banner: "568px",
-      },
-      fontFamily: {
-        ubuntu: ["Ubuntu", "sans-serif"],
+      boxShadow: {
+        custom: '0px 4px 6px 0px rgba(54, 78, 126, 0.10)',
       },
     },
     fontSize: {
