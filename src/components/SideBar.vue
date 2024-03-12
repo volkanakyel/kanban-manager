@@ -1,11 +1,8 @@
 <template>
   <div class="flex">
     <div class="flex flex-col justify-between w-80 pl-6 py-8 fixed h-screen bg-background">
-      <!-- Logo -->
       <div>
         <img class="mb-8" src="../assets/images/logo.svg" alt="Logo">
-
-        <!-- Navigation -->
         <nav class="text-text-primary">
           <p class="mb-4 uppercase text-text-primary">All Boards (3)</p>
           <ul class="space-y-4">
@@ -16,8 +13,6 @@
           </ul>
         </nav>
       </div>
-
-      <!-- Bottom Section -->
       <div>
         <div class="mt-8 w-full bg-grey-100 rounded-md flex justify-center gap-6 items-center p-4">
           <img src="../assets/images/icons/light-mode.svg" alt="">
