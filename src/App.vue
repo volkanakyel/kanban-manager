@@ -9,8 +9,6 @@ import TaskCard from '@/components/TaskCard.vue';
     <SideBar />
     <div class=" ml-96">
       <TaskCard />
-      <TaskCard />
-      <TaskCard />
     </div>
   </div>
 </template>
