@@ -13,6 +13,9 @@ const config: Config = {
       boxShadow: {
         custom: '0px 4px 6px 0px rgba(54, 78, 126, 0.10)',
       },
+      transitionProperty: {
+        'transform': 'transform',
+      },
     },
     fontSize: {
       xs: "12px",
