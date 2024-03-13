@@ -15,7 +15,7 @@ const closeSideBar = (): void => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col h-screen w-full">
     <TopBar />
     <div class="flex flex-1 overflow-hidden">
       <transition name="slide" mode="out-in">
