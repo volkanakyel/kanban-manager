@@ -17,11 +17,11 @@ const closeSideBar = (): void => {
 <template>
   <div class="flex flex-col h-screen w-full">
     <TopBar />
-    <div class="flex flex-1 overflow-hidden">
-      <transition name="slide" mode="out-in">
-        <SideBar v-show="isSidebarOpen" />
+    <div class="flex flex-1 overflow-hidden relative">
+      <transition name="slide">
+        <SideBar v-if="isSidebarOpen" key="sidebar" />
       </transition>
-      <div>
+      <div class="flex-1 transition-all duration-300" :class="{ 'ml-0': !isSidebarOpen, 'ml-[20rem]': isSidebarOpen }">
         <TaskCard />
       </div>
     </div>
@@ -36,7 +36,7 @@ const closeSideBar = (): void => {
   transition: transform 0.3s ease;
 }
 
-.slide-enter,
+.slide-enter-from,
 .slide-leave-to {
   transform: translateX(-100%);
 }
