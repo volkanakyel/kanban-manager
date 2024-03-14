@@ -30,6 +30,7 @@ body {
   --color-highlight: #8471F2;
   --color-dark-blue: #022959;
   --color-light-blue: #ABBCFF;
+  --color-light: #E4EBFA;
   --color-grey-100: #F4F7FD;
 
 }
@@ -42,6 +43,7 @@ body {
   --color-secondary: #2B2C37;
   --color-success: #67E2AE;
   --color-info: #49C4E5;
+  --color-light: #E4EBFA;
   --color-highlight: #8471F2;
   --color-light-blue: #20212C;
 

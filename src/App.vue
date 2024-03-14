@@ -26,7 +26,7 @@ const closeSideBar = (): void => {
       </div>
     </div>
     <button @click="openSideBar" class="bg-primary p-3 text-background absolute bottom-8 rounded-r-full"><img
-        src="./assets/images/icons/icon-hide-sidebar.svg" class=" w-5 h-5 filter brightness-200" alt=""></button>
+        src="./assets/images/icons/show-sidebar.svg" class=" w-5 h-5 filter brightness-200" alt=""></button>
   </div>
 </template>
 

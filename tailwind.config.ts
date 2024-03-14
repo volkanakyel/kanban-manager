@@ -45,6 +45,7 @@ const config: Config = {
       highlight: 'var(--color-highlight)',
       'dark-blue': 'var(--color-dark-blue)',
       'light-blue': 'var(--color-light-blue)',
+      'light': 'var(--color-light)',
       grey: {
         100: 'var(--color-grey-100)',
       },

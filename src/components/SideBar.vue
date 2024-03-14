@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed w-72 top-0 left-0 h-full bg-background z-10 border border-l-primary">
+  <div class="fixed w-72 top-0 left-0 h-full bg-background z-10 border border-light">
     <div class="flex h-full flex-col justify-between py-8">
       <div class="">
         <div class="flex mb-10 gap-4 px-8">
@@ -29,7 +29,7 @@
         </nav>
       </div>
 
-      <div class="px-3">
+      <div class="px-6">
         <div class="mt-8 bg-grey-100 rounded-md flex justify-center gap-6 items-center p-4">
           <img src="../assets/images/icons/light-mode.svg" alt="">
           <label for="toggle" class="inline-flex relative items-center cursor-pointer">
@@ -40,7 +40,10 @@
           </label>
           <img src="../assets/images/icons/dark-mode.svg" alt="">
         </div>
-        <p @click="closeSideBar" class="mt-6 text-text-primary cursor-pointer">Hide Sidebar</p>
+        <div @click="closeSideBar" class=" flex items-center mt-6 cursor-pointer">
+          <img src="../assets/images/icons/hide-sidebar.svg" class="mr-4" alt="">
+          <p class=" text-text-primary">Hide Sidebar</p>
+        </div>
       </div>
     </div>
   </div>

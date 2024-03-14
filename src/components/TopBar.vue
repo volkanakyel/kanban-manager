@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full flex border-b border-primary">
-    <div class=" px-16 gap-4 flex items-center justify-center border-primary border-r">
+  <div class="w-full flex border-b border-light">
+    <div class=" px-16 gap-4 flex items-center justify-center border-light border-r">
       <img src="/logo.svg" alt="Kanban logo">
       <h1 class="text-l font-bold">Kanban</h1>
     </div>
