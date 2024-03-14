@@ -1,5 +1,5 @@
 <template>
-  <div class=" w-72 p-6 shadow-custom">
+  <div class=" w-72 p-6 shadow-custom bg-background">
     <p>Build UI for onboarding flow</p>
     <p>0 of 3 substasks</p>
   </div>

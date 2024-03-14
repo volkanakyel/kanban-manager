@@ -21,7 +21,8 @@ const closeSideBar = (): void => {
       <transition name="slide">
         <SideBar v-if="isSidebarOpen" key="sidebar" />
       </transition>
-      <div class="flex-1 transition-all duration-300" :class="{ 'ml-0': !isSidebarOpen, 'ml-[20rem]': isSidebarOpen }">
+      <div class="flex-1 transition-all duration-300 bg-grey-100"
+        :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
         <TaskCard />
       </div>
     </div>
