@@ -4,7 +4,7 @@ import TopBar from '@/components/TopBar.vue';
 import Kanban from '@/components/Kanban.vue';
 import { ref } from 'vue';
 
-const isSidebarOpen = ref(false);
+const isSidebarOpen = ref(true);
 const openSideBar = (): void => {
   isSidebarOpen.value = true;
 }
