@@ -40,7 +40,7 @@
           </label>
           <img src="../assets/images/icons/dark-mode.svg" alt="">
         </div>
-        <p @click="toggleSideBar" class="mt-6 text-text-primary cursor-pointer">Hide Sidebar</p>
+        <p @click="closeSideBar" class="mt-6 text-text-primary cursor-pointer">Hide Sidebar</p>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@
 
 <script setup lang="ts">
 const emit = defineEmits<{
-  (e: 'toggleSideBar'): void
+  (e: 'closeSideBar'): void
 }>()
 
 interface Props {
@@ -59,8 +59,8 @@ interface Props {
 withDefaults(defineProps<Props>(), {
   isSidebarOpen: true,
 })
-const toggleSideBar = (): void => {
-  emit('toggleSideBar');
+const closeSideBar = (): void => {
+  emit('closeSideBar');
 }
 </script>
 

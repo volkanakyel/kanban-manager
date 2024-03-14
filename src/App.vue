@@ -4,7 +4,7 @@ import TopBar from '@/components/TopBar.vue';
 import TaskCard from '@/components/TaskCard.vue';
 import { ref } from 'vue';
 
-const isSidebarOpen = ref(true);
+const isSidebarOpen = ref(false);
 const openSideBar = (): void => {
   isSidebarOpen.value = true;
 }
@@ -15,19 +15,19 @@ const closeSideBar = (): void => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen w-full">
+  <div class="flex flex-col h-screen w-full relative">
     <TopBar />
     <div class="flex flex-1 overflow-hidden relative">
       <transition name="slide">
-        <SideBar v-if="isSidebarOpen" key="sidebar" />
+        <SideBar v-if="isSidebarOpen" key="sidebar" @closeSideBar="closeSideBar" />
       </transition>
       <div class="flex-1 transition-all duration-300 bg-grey-100"
         :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
         <TaskCard />
       </div>
     </div>
-    <button @click="openSideBar" class="bg-primary p-6 text-background">Open Sidebar</button>
-    <button @click="closeSideBar" class="bg-primary p-6 text-background">Close Sidebar</button>
+    <button @click="openSideBar" class="bg-primary p-4 text-background absolute bottom-8 rounded-r-full"><img
+        src="./assets/images/icons/icon-hide-sidebar.svg" class=" w-5 h-5 filter brightness-200" alt=""></button>
   </div>
 </template>
 
