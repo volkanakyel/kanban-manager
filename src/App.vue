@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SideBar from '@/components/SideBar.vue';
 import TopBar from '@/components/TopBar.vue';
-import TaskCard from '@/components/TaskCard.vue';
+import Kanban from '@/components/Kanban.vue';
 import { ref } from 'vue';
 
 const isSidebarOpen = ref(false);
@@ -17,16 +17,15 @@ const closeSideBar = (): void => {
 <template>
   <div class="flex flex-col h-screen w-full relative">
     <TopBar />
-    <div class="flex flex-1 overflow-hidden relative">
+    <div class="flex flex-1 relative">
       <transition name="slide">
         <SideBar v-if="isSidebarOpen" key="sidebar" @closeSideBar="closeSideBar" />
       </transition>
-      <div class="flex-1 transition-all duration-300 bg-grey-100"
-        :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
-        <TaskCard />
+      <div class="flex-1 transition-all duration-300" :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
+        <Kanban />
       </div>
     </div>
-    <button @click="openSideBar" class="bg-primary p-4 text-background absolute bottom-8 rounded-r-full"><img
+    <button @click="openSideBar" class="bg-primary p-3 text-background absolute bottom-8 rounded-r-full"><img
         src="./assets/images/icons/icon-hide-sidebar.svg" class=" w-5 h-5 filter brightness-200" alt=""></button>
   </div>
 </template>

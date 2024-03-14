@@ -29,7 +29,7 @@
         </nav>
       </div>
 
-      <div class="px-6">
+      <div class="px-3">
         <div class="mt-8 bg-grey-100 rounded-md flex justify-center gap-6 items-center p-4">
           <img src="../assets/images/icons/light-mode.svg" alt="">
           <label for="toggle" class="inline-flex relative items-center cursor-pointer">
