@@ -1,21 +1,35 @@
 <template>
-  <div class="fixed w-80 top-0 left-0 h-full bg-background z-10 border border-l-primary">
-    <div class="flex h-full flex-col justify-between p-10">
-      <div>
-        <img class="mb-8 mt-2" src="../assets/images/logo.svg" alt="Logo">
+  <div class="fixed w-72 top-0 left-0 h-full bg-background z-10 border border-l-primary">
+    <div class="flex h-full flex-col justify-between py-8">
+      <div class="">
+        <div class="flex mb-10 gap-4 px-8">
+          <img src="/logo.svg" alt="Kanban logo">
+          <h1 class="text-l font-bold">Kanban</h1>
+        </div>
 
-        <nav class="text-text-primary">
-          <p class="mb-4 uppercase text-text-primary">All Boards (3)</p>
-          <ul class="space-y-4">
-            <li class="rounded-lg bg-primary p-4 text-white">Platform Launch</li>
-            <li class="rounded-lg p-4 hover:bg-secondary hover:text-white cursor-pointer">Marketing Plan</li>
-            <li class="rounded-lg p-4 hover:bg-secondary hover:text-white cursor-pointer">Roadmap</li>
-            <li class="rounded-lg p-4 hover:bg-secondary hover:text-white cursor-pointer">+ Create New Board</li>
-          </ul>
+        <nav class="text-text-primary pr-6">
+          <p class="mb-6 uppercase text-text-primary pl-8">All Boards (3)</p>
+          <div
+            class="py-3 cursor-pointer flex items-center gap-4 pl-8 hover:text-background hover:bg-primary hover:rounded-r-full">
+            <img src="../assets/images/icons/board.svg" alt="">
+            <p>Platform Launch</p>
+          </div>
+          <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
+            <img src="../assets/images/icons/board.svg" alt="">
+            <p>Marketing Plan</p>
+          </div>
+          <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
+            <img src="../assets/images/icons/board.svg" alt="">
+            <p>Roadmap</p>
+          </div>
+          <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
+            <img src="../assets/images/icons/board.svg" alt="">
+            <p>+Create New Board</p>
+          </div>
         </nav>
       </div>
 
-      <div>
+      <div class="px-6">
         <div class="mt-8 bg-grey-100 rounded-md flex justify-center gap-6 items-center p-4">
           <img src="../assets/images/icons/light-mode.svg" alt="">
           <label for="toggle" class="inline-flex relative items-center cursor-pointer">

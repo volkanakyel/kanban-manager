@@ -1,11 +1,11 @@
 <template>
   <div class="w-full flex border-b border-primary">
-    <div class=" px-20 gap-4 flex items-center justify-center border-primary border-r">
+    <div class=" px-16 gap-4 flex items-center justify-center border-primary border-r">
       <img src="/logo.svg" alt="Kanban logo">
-      <h1 class="text-l font-bold ">Kanban</h1>
+      <h1 class="text-l font-bold">Kanban</h1>
     </div>
     <div class="w-full flex items-center justify-between gap-4 p-8">
-      <h2 class="text-lg font-bold ml-6">Platform Launch</h2>
+      <h2 class="text-m ml-4 font-semibold">Platform Launch</h2>
       <div class="flex items-center">
         <button class="bg-primary text-background font-semibold py-2 px-5 rounded-full mr-4">
           + Add New Task
