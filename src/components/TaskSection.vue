@@ -13,6 +13,10 @@
 
 <script setup lang="ts">
 import TaskCard from '@/components/TaskCard.vue';
+import type { Task } from '@/types/task';
+const props = defineProps<{
+  TaskSection: Task[]
+}>()
 </script>
 
 <style scoped></style>
