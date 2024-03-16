@@ -20,7 +20,6 @@ const boards = ref<Board[]>([])
 
 onMounted(async () => {
   boards.value = await getBoards();
-  console.log(boards.value);
 })
 
 const getFirstBoardColumns = computed<Columns[] | null>(() => {

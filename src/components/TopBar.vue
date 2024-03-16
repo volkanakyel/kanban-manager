@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex border-b border-light">
+  <div class="w-full flex border-b border-light relative">
     <div class=" px-16 gap-4 flex items-center justify-center border-light border-r">
       <img src="/logo.svg" alt="Kanban logo">
       <h1 class="text-l font-bold">Kanban</h1>
@@ -10,14 +10,26 @@
         <button class="bg-primary text-background font-semibold py-2 px-5 rounded-full mr-4">
           + Add New Task
         </button>
-        <img class="h-6 w-6" src="../assets/images/icons/more-icon.svg" alt="More options">
+        <img @click="toggleEditMode" class="h-6 w-6 cursor-pointer" src="../assets/images/icons/more-icon.svg"
+          alt="More options">
       </div>
+      <ul v-show="openEditMode" class=" w-48 absolute -bottom-20 right-8 z-30 bg-background p-4 rounded-xl">
+        <li class="text-text-primary mb-4">Edit Board</li>
+        <li class="text-warning">Delete Board</li>
+      </ul>
     </div>
   </div>
 
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
+
+const openEditMode = ref(false);
+const toggleEditMode = () => {
+  openEditMode.value = !openEditMode.value;
+}
 </script>
 
 <style scoped></style>
