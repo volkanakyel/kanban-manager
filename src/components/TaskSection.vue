@@ -6,17 +6,22 @@
       <h3 class="font-bold text-s">{{ column?.name }}</h3>
     </div>
     <div class="space-y-4">
-      <TaskCard v-for="(task, index) in column?.tasks" :key="index" :task="task" />
+      <TaskCard v-for="(task, index) in getTaskFromColumn" :key="index" :task="task" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import TaskCard from '@/components/TaskCard.vue';
-import type { Columns } from '@/types/task';
-defineProps<{
+import type { Columns, Task } from '@/types/task';
+import { computed } from 'vue';
+const props = defineProps<{
   column: Columns | null,
 }>()
+
+const getTaskFromColumn = computed<Task[] | null | undefined>(() => {
+  return props.column?.tasks;
+})
 </script>
 
 <style scoped></style>

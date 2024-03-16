@@ -9,14 +9,14 @@
 
         <nav class="text-text-primary pr-6">
           <p class="mb-6 uppercase text-text-primary pl-8">All Boards (3)</p>
-          <div v-for="(board, index) in boardsList" :key="index"
+          <div @click="selectBoard(board)" v-for="(board, index) in boardsList" :key="index"
             class="py-3 cursor-pointer flex items-center gap-4 pl-8 board-inactive">
             <img src="../assets/images/icons/board.svg" alt="">
             <p>{{ board }}</p>
           </div>
           <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
             <img src="../assets/images/icons/board.svg" alt="">
-            <p>+Create New Board</p>
+            <p class="text-primary">+Create New Board</p>
           </div>
         </nav>
       </div>
@@ -45,7 +45,8 @@
 
 <script setup lang="ts">
 const emit = defineEmits<{
-  (e: 'closeSideBar'): void
+  (e: 'closeSideBar'): void;
+  (e: 'getSelectedBoard', board: string): void;
 }>()
 
 interface Props {
@@ -57,6 +58,10 @@ withDefaults(defineProps<Props>(), {
 })
 const closeSideBar = (): void => {
   emit('closeSideBar');
+}
+
+const selectBoard = (board: string) => {
+  return emit('getSelectedBoard', board);
 }
 </script>
 

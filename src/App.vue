@@ -2,7 +2,7 @@
 import SideBar from '@/components/SideBar.vue';
 import TopBar from '@/components/TopBar.vue';
 import Kanban from '@/components/Kanban.vue';
-import type { Board, Columns } from './types/task';
+import type { Board } from './types/task';
 
 import { ref, onMounted, computed } from 'vue';
 import { getBoards } from '@/services/getBoards';
@@ -17,18 +17,17 @@ const closeSideBar = (): void => {
 }
 
 const boards = ref<Board[]>([])
+const activeBoard = ref<Board | null>();
 
 onMounted(async () => {
   boards.value = await getBoards();
+  activeBoard.value = boards.value[0];
 })
 
-const getFirstBoardColumns = computed<Columns[] | null>(() => {
-  if (boards.value && boards.value.length > 0) {
-    return boards.value[0].columns; // Return the first board
-  } else {
-    return null;
-  }
-});
+
+const switchBoard = (boardName: string): void => {
+  activeBoard.value = boards.value.find(board => board.name == boardName);
+}
 
 const getBoardList = computed<string[]>(() => {
   return boards.value.map(board => board.name);
@@ -40,10 +39,11 @@ const getBoardList = computed<string[]>(() => {
     <TopBar />
     <div class="flex flex-1 relative">
       <transition name="slide">
-        <SideBar :boardsList="getBoardList" v-if="isSidebarOpen" key="sidebar" @closeSideBar="closeSideBar" />
+        <SideBar @getSelectedBoard="switchBoard" :boardsList="getBoardList" v-if="isSidebarOpen" key="sidebar"
+          @closeSideBar="closeSideBar" />
       </transition>
       <div class="flex-1 transition-all duration-300" :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
-        <Kanban :taskSection="getFirstBoardColumns" />
+        <Kanban :activeBoard="activeBoard" />
       </div>
     </div>
     <button @click="openSideBar" class="bg-primary p-3 text-background absolute bottom-8 rounded-r-full"><img
