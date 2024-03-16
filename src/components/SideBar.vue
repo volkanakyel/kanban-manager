@@ -9,18 +9,10 @@
 
         <nav class="text-text-primary pr-6">
           <p class="mb-6 uppercase text-text-primary pl-8">All Boards (3)</p>
-          <div
+          <div v-for="(board, index) in boardsList" :key="index"
             class="py-3 cursor-pointer flex items-center gap-4 pl-8 hover:text-background hover:bg-primary hover:rounded-r-full">
             <img src="../assets/images/icons/board.svg" alt="">
-            <p>Platform Launch</p>
-          </div>
-          <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
-            <img src="../assets/images/icons/board.svg" alt="">
-            <p>Marketing Plan</p>
-          </div>
-          <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
-            <img src="../assets/images/icons/board.svg" alt="">
-            <p>Roadmap</p>
+            <p>{{ board }}</p>
           </div>
           <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
             <img src="../assets/images/icons/board.svg" alt="">
@@ -57,7 +49,8 @@ const emit = defineEmits<{
 }>()
 
 interface Props {
-  isSidebarOpen?: boolean
+  isSidebarOpen?: boolean;
+  boardsList: string[];
 }
 withDefaults(defineProps<Props>(), {
   isSidebarOpen: true,

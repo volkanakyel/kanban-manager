@@ -20,6 +20,7 @@ const boards = ref<Board[]>([])
 
 onMounted(async () => {
   boards.value = await getBoards();
+  console.log(boards.value);
 })
 
 const getFirstBoardColumns = computed<Columns[] | null>(() => {
@@ -29,6 +30,10 @@ const getFirstBoardColumns = computed<Columns[] | null>(() => {
     return null;
   }
 });
+
+const getBoardList = computed<string[]>(() => {
+  return boards.value.map(board => board.name);
+})
 </script>
 
 <template>
@@ -36,7 +41,7 @@ const getFirstBoardColumns = computed<Columns[] | null>(() => {
     <TopBar />
     <div class="flex flex-1 relative">
       <transition name="slide">
-        <SideBar v-if="isSidebarOpen" key="sidebar" @closeSideBar="closeSideBar" />
+        <SideBar :boardsList="getBoardList" v-if="isSidebarOpen" key="sidebar" @closeSideBar="closeSideBar" />
       </transition>
       <div class="flex-1 transition-all duration-300" :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
         <Kanban :taskSection="getFirstBoardColumns" />
