@@ -5,7 +5,7 @@
       <h1 class="text-l font-bold">Kanban</h1>
     </div>
     <div class="w-full flex items-center justify-between gap-4 p-8">
-      <h2 class="text-m ml-4 font-semibold">Platform Launch</h2>
+      <h2 class="text-m ml-4 font-semibold">{{ activeBoardName }}</h2>
       <div class="flex items-center">
         <button class="bg-primary text-background font-semibold py-2 px-5 rounded-full mr-4">
           + Add New Task
@@ -30,6 +30,10 @@ const openEditMode = ref(false);
 const toggleEditMode = () => {
   openEditMode.value = !openEditMode.value;
 }
+
+defineProps<{
+  activeBoardName: string | undefined,
+}>()
 </script>
 
 <style scoped></style>

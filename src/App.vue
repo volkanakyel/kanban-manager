@@ -36,7 +36,7 @@ const getBoardList = computed<string[]>(() => {
 
 <template>
   <div class="flex flex-col h-screen w-full relative">
-    <TopBar />
+    <TopBar :activeBoardName="activeBoard?.name" />
     <div class="flex flex-1 relative">
       <transition name="slide">
         <SideBar @getSelectedBoard="switchBoard" :boardsList="getBoardList" v-if="isSidebarOpen" key="sidebar"
