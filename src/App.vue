@@ -2,7 +2,10 @@
 import SideBar from '@/components/SideBar.vue';
 import TopBar from '@/components/TopBar.vue';
 import Kanban from '@/components/Kanban.vue';
-import { ref } from 'vue';
+import type { Board, Columns } from './types/task';
+
+import { ref, onMounted, computed } from 'vue';
+import { getBoards } from '@/services/getBoards';
 
 const isSidebarOpen = ref(true);
 const openSideBar = (): void => {
@@ -12,6 +15,21 @@ const openSideBar = (): void => {
 const closeSideBar = (): void => {
   isSidebarOpen.value = false;
 }
+
+const boards = ref<Board[]>([])
+
+onMounted(async () => {
+  boards.value = await getBoards();
+  console.log(boards.value);
+})
+
+const getFirstBoardColumns = computed<Columns[] | null>(() => {
+  if (boards.value && boards.value.length > 0) {
+    return boards.value[0].columns; // Return the first board
+  } else {
+    return null;
+  }
+});
 </script>
 
 <template>
@@ -22,7 +40,7 @@ const closeSideBar = (): void => {
         <SideBar v-if="isSidebarOpen" key="sidebar" @closeSideBar="closeSideBar" />
       </transition>
       <div class="flex-1 transition-all duration-300" :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
-        <Kanban />
+        <Kanban :taskSection="getFirstBoardColumns" />
       </div>
     </div>
     <button @click="openSideBar" class="bg-primary p-3 text-background absolute bottom-8 rounded-r-full"><img
