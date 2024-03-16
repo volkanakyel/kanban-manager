@@ -48,3 +48,17 @@ body {
   --color-light-blue: #20212C;
 
 }
+
+
+
+.hover-bg-opacity-10:hover {
+  background-color: rgba(99, 95, 199, 0.1);
+}
+
+.board-active {
+  @apply text-background bg-primary rounded-r-full;
+}
+
+.board-inactive {
+  @apply hover:rounded-r-full hover:text-primary hover-bg-opacity-10
+}
