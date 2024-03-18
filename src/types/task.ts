@@ -15,7 +15,7 @@ export interface Task {
   subtasks: Subtask[];
 }
 
-interface Subtask {
+export interface Subtask {
   title: string;
   isCompleted: boolean;
 }

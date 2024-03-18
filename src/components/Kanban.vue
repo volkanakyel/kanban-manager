@@ -15,7 +15,6 @@ const props = defineProps<{
 
 const getColumnBoard = computed(() => {
   if (props.activeBoard) {
-    console.log(props.activeBoard);
     return props.activeBoard.columns;
   }
 })
