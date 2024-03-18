@@ -19,3 +19,8 @@ export interface Subtask {
   title: string;
   isCompleted: boolean;
 }
+
+export interface BoardList {
+  boardName: string;
+  isBoardActive: boolean;
+}

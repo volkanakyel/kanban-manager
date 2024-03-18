@@ -9,10 +9,11 @@
 
         <nav class="text-text-primary pr-6">
           <p class="mb-6 uppercase text-text-primary pl-8">All Boards (3)</p>
-          <div @click="selectBoard(board)" v-for="(board, index) in boardsList" :key="index"
-            class="py-3 cursor-pointer flex items-center gap-4 pl-8 board-inactive">
+          <div @click="selectBoard(board.boardName)" v-for="(board, index) in boardsList" :key="index"
+            :class="{ 'board-active': board.isBoardActive, 'board-inactive': !board.isBoardActive }"
+            class="py-3 cursor-pointer flex items-center gap-4 pl-8 ">
             <img src="../assets/images/icons/board.svg" alt="">
-            <p>{{ board }}</p>
+            <p>{{ board.boardName }}</p>
           </div>
           <div class="py-3 cursor-pointer flex justify-start items-center gap-4 pl-8">
             <img src="../assets/images/icons/board.svg" alt="">
@@ -44,6 +45,8 @@
 </template>
 
 <script setup lang="ts">
+import { BoardList } from '@/types/task';
+
 const emit = defineEmits<{
   (e: 'closeSideBar'): void;
   (e: 'getSelectedBoard', board: string): void;
@@ -51,7 +54,7 @@ const emit = defineEmits<{
 
 interface Props {
   isSidebarOpen?: boolean;
-  boardsList: string[];
+  boardsList: BoardList[];
 }
 withDefaults(defineProps<Props>(), {
   isSidebarOpen: true,

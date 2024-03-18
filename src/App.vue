@@ -2,7 +2,7 @@
 import SideBar from '@/components/SideBar.vue';
 import TopBar from '@/components/TopBar.vue';
 import Kanban from '@/components/Kanban.vue';
-import type { Board } from './types/task';
+import type { Board, BoardList } from './types/task';
 
 import { ref, onMounted, computed } from 'vue';
 import { getBoards } from '@/services/getBoards';
@@ -26,11 +26,11 @@ onMounted(async () => {
 
 
 const switchBoard = (boardName: string): void => {
-  activeBoard.value = boards.value.find(board => board.name == boardName);
+  activeBoard.value = boards.value.find(board => board.name === boardName);
 }
 
-const getBoardList = computed<string[]>(() => {
-  return boards.value.map(board => board.name);
+const getBoardList = computed<BoardList[]>(() => {
+  return boards.value.map((board: Board) => ({ boardName: board.name, isBoardActive: activeBoard.value?.name === board.name }));
 })
 </script>
 
