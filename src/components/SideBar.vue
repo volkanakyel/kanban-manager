@@ -8,7 +8,7 @@
         </div>
 
         <nav class="text-text-primary pr-6">
-          <p class="mb-6 uppercase text-text-primary pl-8">All Boards (3)</p>
+          <p class="mb-6 uppercase text-text-primary pl-8">All Boards ({{ boardsList.length }})</p>
           <div @click="selectBoard(board.boardName)" v-for="(board, index) in boardsList" :key="index"
             :class="{ 'board-active': board.isBoardActive, 'board-inactive': !board.isBoardActive }"
             class="py-3 cursor-pointer flex items-center gap-4 pl-8 ">
