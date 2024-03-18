@@ -13,7 +13,8 @@
         <img @click="toggleEditMode" class="h-6 w-6 cursor-pointer" src="../assets/images/icons/more-icon.svg"
           alt="More options">
       </div>
-      <ul v-show="openEditMode" class=" w-48 absolute -bottom-20 right-8 z-30 bg-background p-4 rounded-xl">
+      <ul v-show="openEditMode" ref="editModeRef"
+        class=" w-48 absolute -bottom-20 right-8 z-30 bg-background p-4 rounded-xl">
         <li class="text-text-primary mb-4">Edit Board</li>
         <li class="text-warning">Delete Board</li>
       </ul>
@@ -24,12 +25,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
+import { onClickOutside } from '@vueuse/core'
 
 const openEditMode = ref(false);
 const toggleEditMode = () => {
-  openEditMode.value = !openEditMode.value;
+  openEditMode.value = true;
 }
+
+const editModeRef = ref(null);
+onClickOutside(editModeRef.value, () => openEditMode.value = false);
 
 defineProps<{
   activeBoardName: string | undefined,
