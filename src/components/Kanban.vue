@@ -6,24 +6,26 @@
 
 <script setup lang="ts">
 import TaskSection from '@/components/TaskSection.vue';
-import { Board } from '@/types/task';
+import { Board, Columns } from '@/types/task';
 import { computed } from 'vue';
 
 const props = defineProps<{
   activeBoard: Board | null | undefined;
 }>();
 
-const getColumnBoard = computed(() => {
+const getColumnBoard = computed<Columns[] | null>(() => {
   if (props.activeBoard) {
     return props.activeBoard.columns;
+  } else {
+    return null;
   }
 });
 
-const handleTaskMoved = ({ newColumnId, movedTaskId, newTasks }) => {
-  const oldColumn = getColumnBoard.value.find(column =>
+const handleTaskMoved = ({ newColumnId, movedTaskId, }: { newColumnId: number; movedTaskId: number; }): void => {
+  const oldColumn = getColumnBoard.value?.find(column =>
     column.tasks.some(task => task.id === movedTaskId)
   );
-  const newColumn = getColumnBoard?.value.find(
+  const newColumn = getColumnBoard.value?.find(
     column => column.id === newColumnId
   );
 
