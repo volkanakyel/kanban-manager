@@ -15,41 +15,37 @@ body {
   height: 100%;
   min-height: 100vh;
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 :root {
   --color-background: #ffffff;
-  --color-text-primary: #828FA3;
+  --color-text-primary: #828fa3;
   --color-text-secondary: #000112;
-  --color-primary: #635FC7;
-  --color-secondary: #BEE2FD;
-  --color-success: #67E2AE;
-  --color-info: #49C4E5;
-  --color-warning: #EA5555;
-  --color-highlight: #8471F2;
+  --color-primary: #635fc7;
+  --color-secondary: #bee2fd;
+  --color-success: #67e2ae;
+  --color-info: #49c4e5;
+  --color-warning: #ea5555;
+  --color-highlight: #8471f2;
   --color-dark-blue: #022959;
-  --color-light-blue: #ABBCFF;
-  --color-light: #E4EBFA;
-  --color-grey-100: #F4F7FD;
-
+  --color-light-blue: #abbcff;
+  --color-light: #e4ebfa;
+  --color-grey-100: #f4f7fd;
 }
 
 .dark {
-  --color-background: #20212C;
-  --color-text-primary: #828FA3;
-  --color-text-secondary: #FFFFFF;
-  --color-primary: #635FC7;
-  --color-secondary: #2B2C37;
-  --color-success: #67E2AE;
-  --color-info: #49C4E5;
-  --color-light: #E4EBFA;
-  --color-highlight: #8471F2;
-  --color-light-blue: #20212C;
-
+  --color-background: #20212c;
+  --color-text-primary: #828fa3;
+  --color-text-secondary: #ffffff;
+  --color-primary: #635fc7;
+  --color-secondary: #2b2c37;
+  --color-success: #67e2ae;
+  --color-info: #49c4e5;
+  --color-light: #e4ebfa;
+  --color-highlight: #8471f2;
+  --color-light-blue: #20212c;
 }
-
-
 
 .hover-bg-opacity-10:hover {
   background-color: rgba(99, 95, 199, 0.1);
@@ -60,5 +56,5 @@ body {
 }
 
 .board-inactive {
-  @apply hover:rounded-r-full hover:text-primary hover-bg-opacity-10
+  @apply hover:rounded-r-full hover:text-primary hover-bg-opacity-10;
 }
