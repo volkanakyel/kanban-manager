@@ -34,6 +34,10 @@ const getBoardList = computed<BoardList[]>(() => {
     isBoardActive: activeBoard.value?.name === board.name
   }));
 });
+
+const updateBoard = (updatedBoard: Board) => {
+  activeBoard.value = updatedBoard;
+}
 </script>
 
 <template>
@@ -41,30 +45,15 @@ const getBoardList = computed<BoardList[]>(() => {
     <TopBar :activeBoardName="activeBoard?.name" />
     <div class="flex flex-1 relative">
       <transition name="slide">
-        <SideBar
-          @getSelectedBoard="switchBoard"
-          :boardsList="getBoardList"
-          v-if="isSidebarOpen"
-          key="sidebar"
-          @closeSideBar="closeSideBar"
-        />
+        <SideBar @getSelectedBoard="switchBoard" :boardsList="getBoardList" v-if="isSidebarOpen" key="sidebar"
+          @closeSideBar="closeSideBar" />
       </transition>
-      <div
-        class="flex-1 transition-all duration-300"
-        :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }"
-      >
-        <Kanban :activeBoard="activeBoard" />
+      <div class="flex-1 transition-all duration-300" :class="{ 'ml-0': !isSidebarOpen, 'ml-[18rem]': isSidebarOpen }">
+        <Kanban :activeBoard="activeBoard" @updateBoard="updateBoard" />
       </div>
     </div>
-    <button
-      @click="openSideBar"
-      class="bg-primary p-3 text-background absolute bottom-8 rounded-r-full"
-    >
-      <img
-        src="./assets/images/icons/show-sidebar.svg"
-        class="w-5 h-5 filter brightness-200"
-        alt=""
-      />
+    <button @click="openSideBar" class="bg-primary p-3 text-background absolute bottom-8 rounded-r-full">
+      <img src="./assets/images/icons/show-sidebar.svg" class="w-5 h-5 filter brightness-200" alt="" />
     </button>
   </div>
 </template>

@@ -1,10 +1,11 @@
 <template>
-  <div class="w-80 bg-gray-100 p-4 rounded transition-colors duration-200 h-full" :data-column-id="column?.id">
+  <div class="w-80 bg-gray-100 p-4 rounded transition-colors duration-200 h-full">
     <div class="flex items-center mb-4">
       <span class="h-3 w-3 bg-info rounded-full mr-4"></span>
       <h3 class="font-bold text-s">{{ column?.name }}</h3>
     </div>
-    <draggable class="space-y-4 h-full" v-model="tasks" itemKey="id" group="tasks" @drag-end="handleDragEnd">
+    <draggable class="space-y-4 h-full" :data-column-id="column?.id" v-model="tasks" itemKey="id" group="tasks"
+      @end="handleDragEnd">
       <template #item="{ element }">
         <div :key="element.id" :data-task-id="element.id">
           <TaskCard :task="element" />
@@ -35,6 +36,7 @@ watch(
 const emit = defineEmits(['task-moved']);
 
 const handleDragEnd = (event: any) => {
+
   isDraggingWithin.value = false;
   if (event) {
     const newColumnId = parseInt(event.to.getAttribute('data-column-id'));
