@@ -7,18 +7,18 @@ import type { Board, BoardList } from './types/task';
 import { ref, onMounted, computed } from 'vue';
 import { getBoards } from '@/services/getBoards';
 
+// SIDEBAR
 const isSidebarOpen = ref(true);
 const openSideBar = (): void => {
   isSidebarOpen.value = true;
 };
-
 const closeSideBar = (): void => {
   isSidebarOpen.value = false;
 };
 
+// BOARDS
 const boards = ref<Board[]>([]);
 const activeBoard = ref<Board | null>();
-
 onMounted(async () => {
   boards.value = await getBoards();
   activeBoard.value = boards.value[0];
@@ -35,15 +35,20 @@ const getBoardList = computed<BoardList[]>(() => {
   }));
 });
 
-const updateBoard = (updatedBoard: Board) => {
+const updateBoard = (updatedBoard: Board): void => {
+  const index = boards.value.findIndex((board: Board) => board.id === updatedBoard.id)
   activeBoard.value = updatedBoard;
+  if (index !== -1) {
+    boards.value[index] = updatedBoard;
+  }
 }
+
 </script>
 
 <template>
   <div class="flex flex-col h-screen w-full relative">
     <TopBar :activeBoardName="activeBoard?.name" />
-    <div class="flex flex-1 relative">
+    <div class="flex h-full relative">
       <transition name="slide">
         <SideBar @getSelectedBoard="switchBoard" :boardsList="getBoardList" v-if="isSidebarOpen" key="sidebar"
           @closeSideBar="closeSideBar" />
