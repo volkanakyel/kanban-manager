@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full bg-grey-100 p-6 flex gap-2 overflow-x-auto">
-    <TaskSection v-for="column in getColumnBoard" :key="column.id" :column="column" @task-moved="handleTaskMovedTe" />
+    <TaskSection v-for="column in getColumnBoard" :key="column.id" :column="column" @taskMoved="handleTaskMovedTe" />
   </div>
 </template>
 
@@ -30,11 +30,9 @@ const handleTaskMovedTe = ({ newColumnId, movedTaskId }: { newColumnId: number; 
       column.tasks.some(task => task.id === movedTaskId)
     );
     const newColumn = updatedBoard.columns.find(column => column.id === newColumnId);
-
     if (oldColumn && newColumn) {
       const movedTaskIndex = oldColumn.tasks.findIndex(task => task.id === movedTaskId);
       const [movedTask] = oldColumn.tasks.splice(movedTaskIndex, 1);
-
       movedTask.status = newColumn.name;
       newColumn.tasks.push(movedTask);
       emit('updateBoard', updatedBoard);

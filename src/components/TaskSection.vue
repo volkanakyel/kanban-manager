@@ -4,8 +4,8 @@
       <span class="h-3 w-3 bg-info rounded-full mr-4"></span>
       <h3 class="font-bold text-s">{{ column?.name }}</h3>
     </div>
-    <draggable class="space-y-4 h-full" :data-column-id="column?.id" v-model="tasks" itemKey="id" group="tasks"
-      @end="handleDragEnd">
+    <draggable class="space-y-4 h-full" :list="tasks" item-key="id" :group="{ name: 'tasks', pull: true, put: true }"
+      @change="handleDragChange">
       <template #item="{ element }">
         <div :key="element.id" :data-task-id="element.id">
           <TaskCard :task="element" />
@@ -23,7 +23,6 @@ import type { Columns, Task } from '@/types/task';
 
 const props = defineProps<{ column: Columns | null }>();
 const tasks = ref<Task[]>([]);
-const isDraggingWithin = ref(false);
 
 watch(
   () => props.column?.tasks,
@@ -33,20 +32,21 @@ watch(
   { immediate: true }
 );
 
-const emit = defineEmits(['task-moved']);
+const emit = defineEmits(['taskMoved']);
 
-const handleDragEnd = (event: any) => {
-
-  isDraggingWithin.value = false;
-  if (event) {
-    const newColumnId = parseInt(event.to.getAttribute('data-column-id'));
-    const movedTaskId = parseInt(event.item.getAttribute('data-task-id'));
-    const newTasks = tasks.value.map(task => ({ ...task }));
-    emit('task-moved', {
-      newColumnId: newColumnId,
-      movedTaskId: movedTaskId,
-      newTasks: newTasks
-    });
+const handleDragChange = (event: any) => {
+  if (event.added || event.removed) {
+    const task = event.added ? event.added.element : event.removed.element;
+    const columnIndex = event.added ? event.added.newIndex : event.removed.oldIndex;
+    if (task && columnIndex !== undefined) {
+      emit('taskMoved', {
+        newColumnId: props.column?.id,
+        task: task,
+        newIndex: columnIndex
+      });
+    } else {
+      console.error('Draggable event data is incomplete:', event);
+    }
   }
-};
+}
 </script>
