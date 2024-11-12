@@ -12,9 +12,9 @@
             All Boards ({{ boardsList.length }})
           </p>
           <div @click="selectBoard(board.boardName)" v-for="(board, index) in boardsList" :key="index" :class="{
-              'board-active': board.isBoardActive,
-              'board-inactive': !board.isBoardActive
-            }" class="py-3 cursor-pointer flex items-center gap-4 pl-8">
+            'board-active': board.isBoardActive,
+            'board-inactive': !board.isBoardActive
+          }" class="py-3 cursor-pointer flex items-center gap-4 pl-8">
             <img src="../assets/images/icons/board.svg" alt="" />
             <p>{{ board.boardName }}</p>
           </div>
